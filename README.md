@@ -1,7 +1,7 @@
 # **NASA APOD ETL Pipeline with Airflow and Postgres**
 
 ## **Project Overview**
-Proyek ini membangun sebuah ETL Pipeline sederhana menggunakan Apache Airflow untuk mengambil data harian Astronomy Picture of the Day (APOD) dari NASA API, kemudian melakukan transformasi sederhana untuk mengambil informasi yang relevan, dan akhirnya menyimpan data tersebut ke dalam PostgreSQL database. Pipeline ini dapat membantu dalam mengarsipkan dan menganalisis data APOD secara historis.
+This project builds a simple ETL pipeline using Apache Airflow to retrieve the daily Astronomy Picture of the Day (APOD) from the NASA API, perform basic transformation to extract the relevant information, and finally store the data into a PostgreSQL database. This pipeline can help archive and analyze APOD data historically.
 
 ## **Tools & Technologies**
 - Apache Airflow (ETL Orchestration)
@@ -11,12 +11,14 @@ Proyek ini membangun sebuah ETL Pipeline sederhana menggunakan Apache Airflow un
 - Python (Processing)
 
 ## **Pipeline Stages:**
-1. Extract: Mengambil data APOD dari NASA API berdasarkan tanggal eksekusi DAG.
-2. Transform: Memfilter dan mengambil kolom yang relevan seperti: title, explanation, date, media_type, dan url.
-3. Load: Menyimpan hasil transformasi ke tabel nasa_apod_data di PostgreSQL.
+1. Extract: Retrieve APOD data from the NASA API based on the DAG execution date.
+2. Transform: Filter and extract relevant fields such as title, explanation, date, media_type, dan url.
+3. Load: Insert the transformed data into the nasa_apod_data table in PostgreSQL.
 
 ## **Schedule**
-The pipeline is scheduled to run daily dan akan melakukan catchup untuk mengambil data yang terlewat.
+The pipeline is scheduled to run daily and is configured to catch up on any missed runs.
 
-## Additional Note
-- Two connection were made in Airflow (my_postgres_connection & nasa_api)
+## **Additional Notes**
+- Two Airflow connections need to be configured:
+    - my_postgres_connection
+    - nasa_api
